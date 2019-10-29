@@ -1,6 +1,8 @@
 import React from "react";
 import Person from "./Person";
 import "./Persons.css";
+
+
 export default function Persons() {
   const personData = [
     {
@@ -13,7 +15,7 @@ export default function Persons() {
       name: "Sepna",
       age: 10,
       description: "Happiness officer",
-      isEdited: false
+      isEdited: true
     },
     {
       name: "Sadia",
@@ -22,12 +24,20 @@ export default function Persons() {
       isEdited: true
     }
   ];
+  let enableEdit = (p) => {
+    p.isEdited = true;
+
+  }
   return (
     <div className="Persons">
       <h1>Persons</h1>
-      {personData.map(person => (
-        <Person person={person} />
-      ))}
+      {personData.map(person => {
+        return
+        <Person person={person}
+          callMeEdit={() => enableEdit(person)
+          } />
+      })
+      }
     </div>
   );
 }
